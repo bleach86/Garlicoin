@@ -70,9 +70,13 @@ struct Params {
     uint256 powLimit;
     bool fPowAllowMinDifficultyBlocks;
     bool fPowNoRetargeting;
+    int nDiffForkHeight;
     int64_t nPowTargetSpacing;
     int64_t nPowTargetTimespan;
+    int64_t nOldPowTargetSpacing;
+    int64_t nOldPowTargetTimespan;
     int64_t DifficultyAdjustmentInterval() const { return nPowTargetTimespan / nPowTargetSpacing; }
+    int64_t OldDifficultyAdjustmentInterval() const { return nOldPowTargetTimespan / nOldPowTargetSpacing; }
     uint256 nMinimumChainWork;
     uint256 defaultAssumeValid;
 };

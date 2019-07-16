@@ -30,17 +30,17 @@ If you want to build with ZeroMQ support
 
 NOTE: Building with Qt4 is still supported, however, could result in a broken UI. Building with Qt5 is recommended.
 
-Build Garlicoin Core
+Build Tuxcoin Core
 ------------------------
 
-1. Clone the garlicoin source code and cd into `garlicoin`
+1. Clone the tuxcoin source code and cd into `tuxcoin-V2`
 
-        git clone https://github.com/GarlicoinOrg/Garlicoin
-        cd garlicoin
+        git clone https://github.com/bleach86/tuxcoin-V2
+        cd tuxcoin-V2
 
-2.  Build garlicoin-core:
+2.  Build tuxcoin-core:
 
-    Configure and build the headless garlicoin binaries as well as the GUI (if Qt is found).
+    Configure and build the headless tuxcoin binaries as well as the GUI (if Qt is found).
 
     You can disable the GUI build by passing `--without-gui` to configure.
 
@@ -62,44 +62,44 @@ Build Garlicoin Core
 
     or
 
-        cd ~/garlicoin/src
+        cd ~/tuxcoin/src
         cp litecoind /usr/local/bin/
-        cp garlicoin-cli /usr/local/bin/
+        cp tuxcoin-cli /usr/local/bin/
 
 Running
 -------
 
-Garlicoin Core is now available at `./src/garlicoind`
+Tuxcoin Core is now available at `./src/tuxcoind`
 
 Before running, it's recommended you create an RPC configuration file.
 
-    echo -e "rpcuser=garlicoinrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/Garlicoin/garlicoin.conf"
+    echo -e "rpcuser=tuxcoinrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/Tuxcoin/tuxcoin.conf"
 
-    chmod 600 "/Users/${USER}/Library/Application Support/Garlicoin/garlicoin.conf"
+    chmod 600 "/Users/${USER}/Library/Application Support/Tuxcoin/tuxcoin.conf"
 
-The first time you run garlicoind, it will start downloading the blockchain. This process could take several hours.
+The first time you run tuxcoind, it will start downloading the blockchain. This process could take several hours.
 
 You can monitor the download process by looking at the debug.log file:
 
-    tail -f $HOME/Library/Application\ Support/Garlicoin/debug.log
+    tail -f $HOME/Library/Application\ Support/Tuxcoin/debug.log
 
 Other commands:
 -------
 
-    ./src/garlicoind -daemon # Starts the garlicoin daemon.
-    ./src/garlicoin-cli --help # Outputs a list of command-line options.
-    ./src/garlicoin-cli help # Outputs a list of RPC commands when the daemon is running.
+    ./src/tuxcoind -daemon # Starts the tuxcoin daemon.
+    ./src/tuxcoin-cli --help # Outputs a list of command-line options.
+    ./src/tuxcoin-cli help # Outputs a list of RPC commands when the daemon is running.
 
 Using Qt Creator as IDE
 ------------------------
-You can use Qt Creator as an IDE, for garlicoin development.
+You can use Qt Creator as an IDE, for tuxcoin development.
 Download and install the community edition of [Qt Creator](https://www.qt.io/download/).
 Uncheck everything except Qt Creator during the installation process.
 
 1. Make sure you installed everything through Homebrew mentioned above
 2. Do a proper ./configure --enable-debug
 3. In Qt Creator do "New Project" -> Import Project -> Import Existing Project
-4. Enter "garlicoin-qt" as project name, enter src/qt as location
+4. Enter "tuxcoin-qt" as project name, enter src/qt as location
 5. Leave the file selection as it is
 6. Confirm the "summary page"
 7. In the "Projects" tab select "Manage Kits..."

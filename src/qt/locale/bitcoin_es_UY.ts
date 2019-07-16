@@ -118,16 +118,16 @@
         <translation>Recibiendo direcciones</translation>
     </message>
     <message>
-        <source>Send coins to a Garlicoin address</source>
-        <translation>Enviar monedas a una dirección Garlicoin</translation>
+        <source>Send coins to a Tuxcoin address</source>
+        <translation>Enviar monedas a una dirección Tuxcoin</translation>
     </message>
     <message>
         <source>Change the passphrase used for wallet encryption</source>
         <translation>Cambie la clave utilizada para el cifrado del monedero</translation>
     </message>
     <message>
-        <source>Garlicoin</source>
-        <translation>Garlicoin</translation>
+        <source>Tuxcoin</source>
+        <translation>Tuxcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -252,8 +252,8 @@
 <context>
     <name>Intro</name>
     <message>
-        <source>Garlicoin</source>
-        <translation>Garlicoin</translation>
+        <source>Tuxcoin</source>
+        <translation>Tuxcoin</translation>
     </message>
     <message>
         <source>Error</source>

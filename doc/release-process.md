@@ -5,7 +5,7 @@ Before every release candidate:
 
 * Update translations (ping wumpus on IRC) see [translation_process.md](https://github.com/bitcoin/bitcoin/blob/master/doc/translation_process.md#synchronising-translations).
 
-* Update manpages, see [gen-manpages.sh](https://github.com/GarlicoinOrg/Garlicoin/blob/master/contrib/devtools/README.md#gen-manpagessh).
+* Update manpages, see [gen-manpages.sh](https://github.com/TuxcoinOrg/Tuxcoin/blob/master/contrib/devtools/README.md#gen-manpagessh).
 
 Before every minor and major release:
 
@@ -33,12 +33,12 @@ If you're using the automated script (found in [contrib/gitian-build.sh](/contri
 Check out the source code in the following directory hierarchy.
 
     cd /path/to/your/toplevel/build
-    git clone https://github.com/garlicoin-project/gitian.sigs.ltc.git
-    git clone https://github.com/GarlicoinOrg/Garlicoin-detached-sigs.git
+    git clone https://github.com/tuxcoin-project/gitian.sigs.ltc.git
+    git clone https://github.com/TuxcoinOrg/Tuxcoin-detached-sigs.git
     git clone https://github.com/devrandom/gitian-builder.git
-    git clone https://github.com/GarlicoinOrg/Garlicoin.git
+    git clone https://github.com/TuxcoinOrg/Tuxcoin.git
 
-### Garlicoin maintainers/release engineers, suggestion for writing release notes
+### Tuxcoin maintainers/release engineers, suggestion for writing release notes
 
 Write release notes. git shortlog helps a lot, for example:
 
@@ -61,7 +61,7 @@ If you're using the automated script (found in [contrib/gitian-build.sh](/contri
 
 Setup Gitian descriptors:
 
-    pushd ./garlicoin
+    pushd ./tuxcoin
     export SIGNER=(your Gitian key, ie bluematt, sipa, etc)
     export VERSION=(new version, e.g. 0.8.0)
     git fetch
@@ -95,7 +95,7 @@ Create the OS X SDK tarball, see the [OS X readme](README_osx.md) for details, a
 By default, Gitian will fetch source files as needed. To cache them ahead of time:
 
     pushd ./gitian-builder
-    make -C ../garlicoin/depends download SOURCES_PATH=`pwd`/cache/common
+    make -C ../tuxcoin/depends download SOURCES_PATH=`pwd`/cache/common
     popd
 
 Only missing files will be fetched, so this is safe to re-run for each build.
@@ -103,50 +103,50 @@ Only missing files will be fetched, so this is safe to re-run for each build.
 NOTE: Offline builds must use the --url flag to ensure Gitian fetches only from local URLs. For example:
 
     pushd ./gitian-builder
-    ./bin/gbuild --url garlicoin=/path/to/garlicoin,signature=/path/to/sigs {rest of arguments}
+    ./bin/gbuild --url tuxcoin=/path/to/tuxcoin,signature=/path/to/sigs {rest of arguments}
     popd
 
 The gbuild invocations below <b>DO NOT DO THIS</b> by default.
 
-### Build and sign Garlicoin Core for Linux, Windows, and OS X:
+### Build and sign Tuxcoin Core for Linux, Windows, and OS X:
 
     pushd ./gitian-builder
-    ./bin/gbuild --num-make 2 --memory 3000 --commit garlicoin=v${VERSION} ../garlicoin/contrib/gitian-descriptors/gitian-linux.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs.ltc/ ../garlicoin/contrib/gitian-descriptors/gitian-linux.yml
-    mv build/out/garlicoin-*.tar.gz build/out/src/garlicoin-*.tar.gz ../
+    ./bin/gbuild --num-make 2 --memory 3000 --commit tuxcoin=v${VERSION} ../tuxcoin/contrib/gitian-descriptors/gitian-linux.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs.ltc/ ../tuxcoin/contrib/gitian-descriptors/gitian-linux.yml
+    mv build/out/tuxcoin-*.tar.gz build/out/src/tuxcoin-*.tar.gz ../
 
-    ./bin/gbuild --num-make 2 --memory 3000 --commit garlicoin=v${VERSION} ../garlicoin/contrib/gitian-descriptors/gitian-win.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs.ltc/ ../garlicoin/contrib/gitian-descriptors/gitian-win.yml
-    mv build/out/garlicoin-*-win-unsigned.tar.gz inputs/garlicoin-win-unsigned.tar.gz
-    mv build/out/garlicoin-*.zip build/out/garlicoin-*.exe ../
+    ./bin/gbuild --num-make 2 --memory 3000 --commit tuxcoin=v${VERSION} ../tuxcoin/contrib/gitian-descriptors/gitian-win.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs.ltc/ ../tuxcoin/contrib/gitian-descriptors/gitian-win.yml
+    mv build/out/tuxcoin-*-win-unsigned.tar.gz inputs/tuxcoin-win-unsigned.tar.gz
+    mv build/out/tuxcoin-*.zip build/out/tuxcoin-*.exe ../
 
-    ./bin/gbuild --num-make 2 --memory 3000 --commit garlicoin=v${VERSION} ../garlicoin/contrib/gitian-descriptors/gitian-osx.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs.ltc/ ../garlicoin/contrib/gitian-descriptors/gitian-osx.yml
-    mv build/out/garlicoin-*-osx-unsigned.tar.gz inputs/garlicoin-osx-unsigned.tar.gz
-    mv build/out/garlicoin-*.tar.gz build/out/garlicoin-*.dmg ../
+    ./bin/gbuild --num-make 2 --memory 3000 --commit tuxcoin=v${VERSION} ../tuxcoin/contrib/gitian-descriptors/gitian-osx.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs.ltc/ ../tuxcoin/contrib/gitian-descriptors/gitian-osx.yml
+    mv build/out/tuxcoin-*-osx-unsigned.tar.gz inputs/tuxcoin-osx-unsigned.tar.gz
+    mv build/out/tuxcoin-*.tar.gz build/out/tuxcoin-*.dmg ../
     popd
 
 Build output expected:
 
-  1. source tarball (`garlicoin-${VERSION}.tar.gz`)
-  2. linux 32-bit and 64-bit dist tarballs (`garlicoin-${VERSION}-linux[32|64].tar.gz`)
-  3. windows 32-bit and 64-bit unsigned installers and dist zips (`garlicoin-${VERSION}-win[32|64]-setup-unsigned.exe`, `garlicoin-${VERSION}-win[32|64].zip`)
-  4. OS X unsigned installer and dist tarball (`garlicoin-${VERSION}-osx-unsigned.dmg`, `garlicoin-${VERSION}-osx64.tar.gz`)
+  1. source tarball (`tuxcoin-${VERSION}.tar.gz`)
+  2. linux 32-bit and 64-bit dist tarballs (`tuxcoin-${VERSION}-linux[32|64].tar.gz`)
+  3. windows 32-bit and 64-bit unsigned installers and dist zips (`tuxcoin-${VERSION}-win[32|64]-setup-unsigned.exe`, `tuxcoin-${VERSION}-win[32|64].zip`)
+  4. OS X unsigned installer and dist tarball (`tuxcoin-${VERSION}-osx-unsigned.dmg`, `tuxcoin-${VERSION}-osx64.tar.gz`)
   5. Gitian signatures (in `gitian.sigs.ltc/${VERSION}-<linux|{win,osx}-unsigned>/(your Gitian key)/`)
 
 ### Verify other gitian builders signatures to your own. (Optional)
 
 Add other gitian builders keys to your gpg keyring, and/or refresh keys.
 
-    gpg --import garlicoin/contrib/gitian-keys/*.pgp
+    gpg --import tuxcoin/contrib/gitian-keys/*.pgp
     gpg --refresh-keys
 
 Verify the signatures
 
     pushd ./gitian-builder
-    ./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-linux ../garlicoin/contrib/gitian-descriptors/gitian-linux.yml
-    ./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-win-unsigned ../garlicoin/contrib/gitian-descriptors/gitian-win.yml
-    ./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-osx-unsigned ../garlicoin/contrib/gitian-descriptors/gitian-osx.yml
+    ./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-linux ../tuxcoin/contrib/gitian-descriptors/gitian-linux.yml
+    ./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-win-unsigned ../tuxcoin/contrib/gitian-descriptors/gitian-win.yml
+    ./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-osx-unsigned ../tuxcoin/contrib/gitian-descriptors/gitian-osx.yml
     popd
 
 ### Next steps:
@@ -167,22 +167,22 @@ Codesigner only: Create Windows/OS X detached signatures:
 
 Codesigner only: Sign the osx binary:
 
-    transfer garlicoin-osx-unsigned.tar.gz to osx for signing
-    tar xf garlicoin-osx-unsigned.tar.gz
+    transfer tuxcoin-osx-unsigned.tar.gz to osx for signing
+    tar xf tuxcoin-osx-unsigned.tar.gz
     ./detached-sig-create.sh -s "Key ID"
     Enter the keychain password and authorize the signature
     Move signature-osx.tar.gz back to the gitian host
 
 Codesigner only: Sign the windows binaries:
 
-    tar xf garlicoin-win-unsigned.tar.gz
+    tar xf tuxcoin-win-unsigned.tar.gz
     ./detached-sig-create.sh -key /path/to/codesign.key
     Enter the passphrase for the key when prompted
     signature-win.tar.gz will be created
 
 Codesigner only: Commit the detached codesign payloads:
 
-    cd ~/garlicoin-detached-sigs
+    cd ~/tuxcoin-detached-sigs
     checkout the appropriate branch for this release series
     rm -rf *
     tar xf signature-osx.tar.gz
@@ -195,25 +195,25 @@ Codesigner only: Commit the detached codesign payloads:
 Non-codesigners: wait for Windows/OS X detached signatures:
 
 - Once the Windows/OS X builds each have 3 matching signatures, they will be signed with their respective release keys.
-- Detached signatures will then be committed to the [garlicoin-detached-sigs](https://github.com/GarlicoinOrg/Garlicoin-detached-sigs) repository, which can be combined with the unsigned apps to create signed binaries.
+- Detached signatures will then be committed to the [tuxcoin-detached-sigs](https://github.com/TuxcoinOrg/Tuxcoin-detached-sigs) repository, which can be combined with the unsigned apps to create signed binaries.
 
 Create (and optionally verify) the signed OS X binary:
 
     pushd ./gitian-builder
-    ./bin/gbuild -i --commit signature=v${VERSION} ../garlicoin/contrib/gitian-descriptors/gitian-osx-signer.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs.ltc/ ../garlicoin/contrib/gitian-descriptors/gitian-osx-signer.yml
-    ./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-osx-signed ../garlicoin/contrib/gitian-descriptors/gitian-osx-signer.yml
-    mv build/out/garlicoin-osx-signed.dmg ../garlicoin-${VERSION}-osx.dmg
+    ./bin/gbuild -i --commit signature=v${VERSION} ../tuxcoin/contrib/gitian-descriptors/gitian-osx-signer.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs.ltc/ ../tuxcoin/contrib/gitian-descriptors/gitian-osx-signer.yml
+    ./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-osx-signed ../tuxcoin/contrib/gitian-descriptors/gitian-osx-signer.yml
+    mv build/out/tuxcoin-osx-signed.dmg ../tuxcoin-${VERSION}-osx.dmg
     popd
 
 Create (and optionally verify) the signed Windows binaries:
 
     pushd ./gitian-builder
-    ./bin/gbuild -i --commit signature=v${VERSION} ../garlicoin/contrib/gitian-descriptors/gitian-win-signer.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs.ltc/ ../garlicoin/contrib/gitian-descriptors/gitian-win-signer.yml
-    ./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-win-signed ../garlicoin/contrib/gitian-descriptors/gitian-win-signer.yml
-    mv build/out/garlicoin-*win64-setup.exe ../garlicoin-${VERSION}-win64-setup.exe
-    mv build/out/garlicoin-*win32-setup.exe ../garlicoin-${VERSION}-win32-setup.exe
+    ./bin/gbuild -i --commit signature=v${VERSION} ../tuxcoin/contrib/gitian-descriptors/gitian-win-signer.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs.ltc/ ../tuxcoin/contrib/gitian-descriptors/gitian-win-signer.yml
+    ./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-win-signed ../tuxcoin/contrib/gitian-descriptors/gitian-win-signer.yml
+    mv build/out/tuxcoin-*win64-setup.exe ../tuxcoin-${VERSION}-win64-setup.exe
+    mv build/out/tuxcoin-*win32-setup.exe ../tuxcoin-${VERSION}-win32-setup.exe
     popd
 
 Commit your signature for the signed OS X/Windows binaries:
@@ -235,23 +235,23 @@ sha256sum * > SHA256SUMS
 
 The list of files should be:
 ```
-garlicoin-${VERSION}-aarch64-linux-gnu.tar.gz
-garlicoin-${VERSION}-arm-linux-gnueabihf.tar.gz
-garlicoin-${VERSION}-i686-pc-linux-gnu.tar.gz
-garlicoin-${VERSION}-x86_64-linux-gnu.tar.gz
-garlicoin-${VERSION}-osx64.tar.gz
-garlicoin-${VERSION}-osx.dmg
-garlicoin-${VERSION}.tar.gz
-garlicoin-${VERSION}-win32-setup.exe
-garlicoin-${VERSION}-win32.zip
-garlicoin-${VERSION}-win64-setup.exe
-garlicoin-${VERSION}-win64.zip
+tuxcoin-${VERSION}-aarch64-linux-gnu.tar.gz
+tuxcoin-${VERSION}-arm-linux-gnueabihf.tar.gz
+tuxcoin-${VERSION}-i686-pc-linux-gnu.tar.gz
+tuxcoin-${VERSION}-x86_64-linux-gnu.tar.gz
+tuxcoin-${VERSION}-osx64.tar.gz
+tuxcoin-${VERSION}-osx.dmg
+tuxcoin-${VERSION}.tar.gz
+tuxcoin-${VERSION}-win32-setup.exe
+tuxcoin-${VERSION}-win32.zip
+tuxcoin-${VERSION}-win64-setup.exe
+tuxcoin-${VERSION}-win64.zip
 ```
 The `*-debug*` files generated by the gitian build contain debug symbols
 for troubleshooting by developers. It is assumed that anyone that is interested
 in debugging can run gitian to generate the files for themselves. To avoid
 end-user confusion about which file to pick, as well as save storage
-space *do not upload these to the garlicoin.io server, nor put them in the torrent*.
+space *do not upload these to the tuxcoin.io server, nor put them in the torrent*.
 
 - GPG-sign it, delete the unsigned file:
 ```
@@ -261,24 +261,24 @@ rm SHA256SUMS
 (the digest algorithm is forced to sha256 to avoid confusion of the `Hash:` header that GPG adds with the SHA256 used for the files)
 Note: check that SHA256SUMS itself doesn't end up in SHA256SUMS, which is a spurious/nonsensical entry.
 
-- Upload zips and installers, as well as `SHA256SUMS.asc` from last step, to the garlicoin.io server.
+- Upload zips and installers, as well as `SHA256SUMS.asc` from last step, to the tuxcoin.io server.
 
 ```
 
-- Update garlicoin.io version
+- Update tuxcoin.io version
 
 - Announce the release:
 
-  - garlicoin-dev and garlicoin-dev mailing list
+  - tuxcoin-dev and tuxcoin-dev mailing list
 
-  - blog.garlicoin.io blog post
+  - blog.tuxcoin.io blog post
 
-  - Update title of #garlicoin and #garlicoin-dev on Freenode IRC
+  - Update title of #tuxcoin and #tuxcoin-dev on Freenode IRC
 
-  - Optionally twitter, reddit /r/Garlicoin, ... but this will usually sort out itself
+  - Optionally twitter, reddit /r/Tuxcoin, ... but this will usually sort out itself
 
   - Archive release notes for the new version to `doc/release-notes/` (branch `master` and branch of the release)
 
-  - Create a [new GitHub release](https://github.com/GarlicoinOrg/Garlicoin/releases/new) with a link to the archived release notes.
+  - Create a [new GitHub release](https://github.com/TuxcoinOrg/Tuxcoin/releases/new) with a link to the archived release notes.
 
   - Celebrate

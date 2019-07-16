@@ -10,8 +10,8 @@
 #include <utilstrencodings.h>
 #include <crypto/common.h>
 #include <crypto/scrypt.h>
-#include <chainparams.h>
 #include <crypto/allium/allium.h>
+#include <chainparams.h>
 
 uint256 CBlockHeader::GetHash() const
 {
@@ -23,7 +23,7 @@ uint256 CBlockHeader::GetPoWHash(int nAlgo) const
     uint256 thash;
     switch(nAlgo){
         case CChainParams::ALGO_SCRYPT :
-            scrypt_N_1_1_256(BEGIN(nVersion), BEGIN(thash), 10);
+            scrypt_N_1_1_256(BEGIN(nVersion), BEGIN(thash), 9);
             break;
         case CChainParams::ALGO_ALLIUM :
             allium_hash(BEGIN(nVersion), BEGIN(thash));

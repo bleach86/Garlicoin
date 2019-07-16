@@ -16,7 +16,7 @@ osx=true
 SIGNER=
 VERSION=
 commit=false
-url=https://github.com/GarlicoinOrg/Garlicoin
+url=https://github.com/bleach86/tuxcoin-V2
 proc=2
 mem=2000
 lxc=true
@@ -30,7 +30,7 @@ commitFiles=true
 read -d '' usage <<- EOF
 Usage: $scriptName [-c|u|v|b|s|B|o|h|j|m|] signer version
 
-Run this script from the directory containing the garlicoin, gitian-builder, gitian.sigs.ltc, and garlicoin-detached-sigs.
+Run this script from the directory containing the tuxcoin, gitian-builder, gitian.sigs.ltc, and tuxcoin-detached-sigs.
 
 Arguments:
 signer          GPG signer to sign each build assert file
@@ -38,7 +38,7 @@ version		Version number, commit, or branch to build. If building a commit or bra
 
 Options:
 -c|--commit	Indicate that the version argument is for a commit or branch
--u|--url	Specify the URL of the repository. Default is https://github.com/GarlicoinOrg/Garlicoin
+-u|--url	Specify the URL of the repository. Default is https://github.com/bleach86/tuxcoin-V2
 -v|--verify 	Verify the gitian build
 -b|--build	Do a gitian build
 -s|--sign	Make signed binaries for Windows and Mac OSX
@@ -229,8 +229,8 @@ echo ${COMMIT}
 if [[ $setup = true ]]
 then
     sudo apt-get install ruby apache2 git apt-cacher-ng python-vm-builder qemu-kvm qemu-utils
-    git clone https://github.com/GarlicoinOrg/gitian.sigs.ltc.git
-    git clone https://github.com/GarlicoinOrg/garlicoin-detached-sigs.git
+    git clone https://github.com/TuxcoinOrg/gitian.sigs.ltc.git			# Those files do not exist
+    git clone https://github.com/TuxcoinOrg/tuxcoin-detached-sigs.git		# Same as above
     git clone https://github.com/devrandom/gitian-builder.git
     pushd ./gitian-builder
     if [[ -n "$USE_LXC" ]]
@@ -244,7 +244,7 @@ then
 fi
 
 # Set up build
-pushd ./garlicoin
+pushd ./tuxcoin
 git fetch
 git checkout ${COMMIT}
 popd
@@ -253,7 +253,7 @@ popd
 if [[ $build = true ]]
 then
 	# Make output folder
-	mkdir -p ./garlicoin-binaries/${VERSION}
+	mkdir -p ./tuxcoin-binaries/${VERSION}
 	
 	# Build Dependencies
 	echo ""
@@ -263,7 +263,7 @@ then
 	mkdir -p inputs
 	wget -N -P inputs $osslPatchUrl
 	wget -N -P inputs $osslTarUrl
-	make -C ../garlicoin/depends download SOURCES_PATH=`pwd`/cache/common
+	make -C ../tuxcoin/depends download SOURCES_PATH=`pwd`/cache/common
 
 	# Linux
 	if [[ $linux = true ]]
@@ -271,9 +271,9 @@ then
             echo ""
 	    echo "Compiling ${VERSION} Linux"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit garlicoin=${COMMIT} --url garlicoin=${url} ../garlicoin/contrib/gitian-descriptors/gitian-linux.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs.ltc/ ../garlicoin/contrib/gitian-descriptors/gitian-linux.yml
-	    mv build/out/garlicoin-*.tar.gz build/out/src/garlicoin-*.tar.gz ../garlicoin-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit tuxcoin=${COMMIT} --url tuxcoin=${url} ../tuxcoin/contrib/gitian-descriptors/gitian-linux.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs.ltc/ ../tuxcoin/contrib/gitian-descriptors/gitian-linux.yml
+	    mv build/out/tuxcoin-*.tar.gz build/out/src/tuxcoin-*.tar.gz ../tuxcoin-binaries/${VERSION}
 	fi
 	# Windows
 	if [[ $windows = true ]]
@@ -281,10 +281,10 @@ then
 	    echo ""
 	    echo "Compiling ${VERSION} Windows"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit garlicoin=${COMMIT} --url garlicoin=${url} ../garlicoin/contrib/gitian-descriptors/gitian-win.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs.ltc/ ../garlicoin/contrib/gitian-descriptors/gitian-win.yml
-	    mv build/out/garlicoin-*-win-unsigned.tar.gz inputs/garlicoin-win-unsigned.tar.gz
-	    mv build/out/garlicoin-*.zip build/out/garlicoin-*.exe ../garlicoin-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit tuxcoin=${COMMIT} --url tuxcoin=${url} ../tuxcoin/contrib/gitian-descriptors/gitian-win.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs.ltc/ ../tuxcoin/contrib/gitian-descriptors/gitian-win.yml
+	    mv build/out/tuxcoin-*-win-unsigned.tar.gz inputs/tuxcoin-win-unsigned.tar.gz
+	    mv build/out/tuxcoin-*.zip build/out/tuxcoin-*.exe ../tuxcoin-binaries/${VERSION}
 	fi
 	# Mac OSX
 	if [[ $osx = true ]]
@@ -292,10 +292,10 @@ then
 	    echo ""
 	    echo "Compiling ${VERSION} Mac OSX"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit garlicoin=${COMMIT} --url garlicoin=${url} ../garlicoin/contrib/gitian-descriptors/gitian-osx.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs.ltc/ ../garlicoin/contrib/gitian-descriptors/gitian-osx.yml
-	    mv build/out/garlicoin-*-osx-unsigned.tar.gz inputs/garlicoin-osx-unsigned.tar.gz
-	    mv build/out/garlicoin-*.tar.gz build/out/garlicoin-*.dmg ../garlicoin-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit tuxcoin=${COMMIT} --url tuxcoin=${url} ../tuxcoin/contrib/gitian-descriptors/gitian-osx.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs.ltc/ ../tuxcoin/contrib/gitian-descriptors/gitian-osx.yml
+	    mv build/out/tuxcoin-*-osx-unsigned.tar.gz inputs/tuxcoin-osx-unsigned.tar.gz
+	    mv build/out/tuxcoin-*.tar.gz build/out/tuxcoin-*.dmg ../tuxcoin-binaries/${VERSION}
 	fi
 	popd
 
@@ -322,27 +322,27 @@ then
 	echo ""
 	echo "Verifying v${VERSION} Linux"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-linux ../garlicoin/contrib/gitian-descriptors/gitian-linux.yml
+	./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-linux ../tuxcoin/contrib/gitian-descriptors/gitian-linux.yml
 	# Windows
 	echo ""
 	echo "Verifying v${VERSION} Windows"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-win-unsigned ../garlicoin/contrib/gitian-descriptors/gitian-win.yml
+	./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-win-unsigned ../tuxcoin/contrib/gitian-descriptors/gitian-win.yml
 	# Mac OSX	
 	echo ""
 	echo "Verifying v${VERSION} Mac OSX"
 	echo ""	
-	./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-osx-unsigned ../garlicoin/contrib/gitian-descriptors/gitian-osx.yml
+	./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-osx-unsigned ../tuxcoin/contrib/gitian-descriptors/gitian-osx.yml
 	# Signed Windows
 	echo ""
 	echo "Verifying v${VERSION} Signed Windows"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-osx-signed ../garlicoin/contrib/gitian-descriptors/gitian-osx-signer.yml
+	./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-osx-signed ../tuxcoin/contrib/gitian-descriptors/gitian-osx-signer.yml
 	# Signed Mac OSX
 	echo ""
 	echo "Verifying v${VERSION} Signed Mac OSX"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-osx-signed ../garlicoin/contrib/gitian-descriptors/gitian-osx-signer.yml	
+	./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-osx-signed ../tuxcoin/contrib/gitian-descriptors/gitian-osx-signer.yml	
 	popd
 fi
 
@@ -357,10 +357,10 @@ then
 	    echo ""
 	    echo "Signing ${VERSION} Windows"
 	    echo ""
-	    ./bin/gbuild -i --commit signature=${COMMIT} ../garlicoin/contrib/gitian-descriptors/gitian-win-signer.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs.ltc/ ../garlicoin/contrib/gitian-descriptors/gitian-win-signer.yml
-	    mv build/out/garlicoin-*win64-setup.exe ../garlicoin-binaries/${VERSION}
-	    mv build/out/garlicoin-*win32-setup.exe ../garlicoin-binaries/${VERSION}
+	    ./bin/gbuild -i --commit signature=${COMMIT} ../tuxcoin/contrib/gitian-descriptors/gitian-win-signer.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs.ltc/ ../tuxcoin/contrib/gitian-descriptors/gitian-win-signer.yml
+	    mv build/out/tuxcoin-*win64-setup.exe ../tuxcoin-binaries/${VERSION}
+	    mv build/out/tuxcoin-*win32-setup.exe ../tuxcoin-binaries/${VERSION}
 	fi
 	# Sign Mac OSX
 	if [[ $osx = true ]]
@@ -368,9 +368,9 @@ then
 	    echo ""
 	    echo "Signing ${VERSION} Mac OSX"
 	    echo ""
-	    ./bin/gbuild -i --commit signature=${COMMIT} ../garlicoin/contrib/gitian-descriptors/gitian-osx-signer.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs.ltc/ ../garlicoin/contrib/gitian-descriptors/gitian-osx-signer.yml
-	    mv build/out/garlicoin-osx-signed.dmg ../garlicoin-binaries/${VERSION}/garlicoin-${VERSION}-osx.dmg
+	    ./bin/gbuild -i --commit signature=${COMMIT} ../tuxcoin/contrib/gitian-descriptors/gitian-osx-signer.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs.ltc/ ../tuxcoin/contrib/gitian-descriptors/gitian-osx-signer.yml
+	    mv build/out/tuxcoin-osx-signed.dmg ../tuxcoin-binaries/${VERSION}/tuxcoin-${VERSION}-osx.dmg
 	fi
 	popd
 

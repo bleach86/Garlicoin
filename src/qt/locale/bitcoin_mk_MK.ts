@@ -138,7 +138,7 @@
         <translation>Повторно индексирање на блокови од дискот...</translation>
     </message>
     <message>
-        <source>Send coins to a Garlicoin address</source>
+        <source>Send coins to a Tuxcoin address</source>
         <translation>Испрати биткоини на Биткоин адреса</translation>
     </message>
     <message>
@@ -146,7 +146,7 @@
         <translation>&amp;Потврди порака...</translation>
     </message>
     <message>
-        <source>Garlicoin</source>
+        <source>Tuxcoin</source>
         <translation>Биткоин</translation>
     </message>
     <message>
@@ -299,7 +299,7 @@
 <context>
     <name>Intro</name>
     <message>
-        <source>Garlicoin</source>
+        <source>Tuxcoin</source>
         <translation>Биткоин</translation>
     </message>
     <message>
@@ -590,7 +590,7 @@
         <translation>Опции:</translation>
     </message>
     <message>
-        <source>Garlicoin Core</source>
+        <source>Tuxcoin Core</source>
         <translation>Биткоин Core</translation>
     </message>
     <message>

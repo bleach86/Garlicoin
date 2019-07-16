@@ -42,9 +42,9 @@ TEST_EXIT_FAILED = 1
 TEST_EXIT_SKIPPED = 77
 
 class BitcoinTestFramework():
-    """Base class for a garlicoin test script.
+    """Base class for a tuxcoin test script.
 
-    Individual garlicoin test scripts should subclass this class and override the set_test_params() and run_test() methods.
+    Individual tuxcoin test scripts should subclass this class and override the set_test_params() and run_test() methods.
 
     Individual tests can also override the following methods to customize the test setup:
 
@@ -72,11 +72,11 @@ class BitcoinTestFramework():
 
         parser = optparse.OptionParser(usage="%prog [options]")
         parser.add_option("--nocleanup", dest="nocleanup", default=False, action="store_true",
-                          help="Leave garlicoinds and test.* datadir on exit or error")
+                          help="Leave tuxcoinds and test.* datadir on exit or error")
         parser.add_option("--noshutdown", dest="noshutdown", default=False, action="store_true",
-                          help="Don't stop garlicoinds after the test execution")
+                          help="Don't stop tuxcoinds after the test execution")
         parser.add_option("--srcdir", dest="srcdir", default=os.path.normpath(os.path.dirname(os.path.realpath(__file__)) + "/../../../src"),
-                          help="Source directory containing garlicoind/garlicoin-cli (default: %default)")
+                          help="Source directory containing tuxcoind/tuxcoin-cli (default: %default)")
         parser.add_option("--cachedir", dest="cachedir", default=os.path.normpath(os.path.dirname(os.path.realpath(__file__)) + "/../../cache"),
                           help="Directory for caching pregenerated datadirs")
         parser.add_option("--tmpdir", dest="tmpdir", help="Root directory for datadirs")
@@ -93,7 +93,7 @@ class BitcoinTestFramework():
         parser.add_option("--pdbonfailure", dest="pdbonfailure", default=False, action="store_true",
                           help="Attach a python debugger if test fails")
         parser.add_option("--usecli", dest="usecli", default=False, action="store_true",
-                          help="use garlicoin-cli instead of RPC for all commands")
+                          help="use tuxcoin-cli instead of RPC for all commands")
         self.add_options(parser)
         (self.options, self.args) = parser.parse_args()
 
@@ -145,7 +145,7 @@ class BitcoinTestFramework():
             if self.nodes:
                 self.stop_nodes()
         else:
-            self.log.info("Note: garlicoinds were not stopped and may still be running")
+            self.log.info("Note: tuxcoinds were not stopped and may still be running")
 
         if not self.options.nocleanup and not self.options.noshutdown and success != TestStatus.FAILED:
             self.log.info("Cleaning up")
@@ -287,9 +287,9 @@ class BitcoinTestFramework():
                         raise AssertionError("Expected error \"" + expected_msg + "\" not found in:\n" + stderr)
             else:
                 if expected_msg is None:
-                    assert_msg = "garlicoind should have exited with an error"
+                    assert_msg = "tuxcoind should have exited with an error"
                 else:
-                    assert_msg = "garlicoind should have exited with expected error " + expected_msg
+                    assert_msg = "tuxcoind should have exited with expected error " + expected_msg
                 raise AssertionError(assert_msg)
 
     def wait_for_node_exit(self, i, timeout):
@@ -387,7 +387,7 @@ class BitcoinTestFramework():
             # Create cache directories, run bitcoinds:
             for i in range(MAX_NODES):
                 datadir = initialize_datadir(self.options.cachedir, i)
-                args = [os.getenv("GARLICOIND", "garlicoind"), "-server", "-keypool=1", "-datadir=" + datadir, "-discover=0"]
+                args = [os.getenv("TUXCOIND", "tuxcoind"), "-server", "-keypool=1", "-datadir=" + datadir, "-discover=0"]
                 if i > 0:
                     args.append("-connect=127.0.0.1:" + str(p2p_port(0)))
                 self.nodes.append(TestNode(i, self.options.cachedir, extra_args=[], rpchost=None, timewait=None, binary=None, stderr=None, mocktime=self.mocktime, coverage_dir=None))
@@ -455,11 +455,11 @@ class ComparisonTestFramework(BitcoinTestFramework):
 
     def add_options(self, parser):
         parser.add_option("--testbinary", dest="testbinary",
-                          default=os.getenv("GARLICOIND", "garlicoind"),
-                          help="garlicoind binary to test")
+                          default=os.getenv("TUXCOIND", "tuxcoind"),
+                          help="tuxcoind binary to test")
         parser.add_option("--refbinary", dest="refbinary",
-                          default=os.getenv("GARLICOIND", "garlicoind"),
-                          help="garlicoind binary to use for reference nodes (if any)")
+                          default=os.getenv("TUXCOIND", "tuxcoind"),
+                          help="tuxcoind binary to use for reference nodes (if any)")
 
     def setup_network(self):
         extra_args = [['-whitelist=127.0.0.1']] * self.num_nodes

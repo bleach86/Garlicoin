@@ -1,41 +1,41 @@
-Garlicoin Core
+Tuxcoin Core
 =============
 
 Setup
 ---------------------
-Garlicoin Core is the original Garlicoin client and it builds the backbone of the network. It downloads and, by default, stores the entire history of Garlicoin transactions (which is currently more than 7 GBs); depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more.
+Tuxcoin Core is the original Tuxcoin client and it builds the backbone of the network. It downloads and, by default, stores the entire history of Tuxcoin transactions (which is currently more than 7 GBs); depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more.
 
-To download Garlicoin Core, visit [garlicoin.io](https://garlicoin.io).
+To download Tuxcoin Core, visit [tuxcoin.io](https://tuxcoin.io).
 
 Running
 ---------------------
-The following are some helpful notes on how to run Garlicoin on your native platform.
+The following are some helpful notes on how to run Tuxcoin on your native platform.
 
 ### Unix
 
 Unpack the files into a directory and run:
 
-- `bin/garlicoin-qt` (GUI) or
-- `bin/garlicoind` (headless)
+- `bin/tuxcoin-qt` (GUI) or
+- `bin/tuxcoind` (headless)
 
 ### Windows
 
-Unpack the files into a directory, and then run garlicoin-qt.exe.
+Unpack the files into a directory, and then run tuxcoin-qt.exe.
 
 ### OS X
 
-Drag Garlicoin-Core to your applications folder, and then run Garlicoin-Core.
+Drag Tuxcoin-Core to your applications folder, and then run Tuxcoin-Core.
 
 ### Need Help?
 
-* See the documentation at the [Garlicoin Wiki](https://garlicoin.info/)
+* See the documentation at the [Tuxcoin Wiki](https://tuxcoin.info/)
 for help and more information.
-* Ask for help on [#garlicoin](http://webchat.freenode.net?channels=garlicoin) on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net?channels=garlicoin).
-* Ask for help on the [GarlicoinTalk](https://garlicointalk.io/) forums.
+* Ask for help on [#tuxcoin](http://webchat.freenode.net?channels=tuxcoin) on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net?channels=tuxcoin).
+* Ask for help on the [TuxcoinTalk](https://tuxcointalk.io/) forums.
 
 Building
 ---------------------
-The following are developer notes on how to build Garlicoin on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
+The following are developer notes on how to build Tuxcoin on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
 
 - [Dependencies](dependencies.md)
 - [OS X Build Notes](build-osx.md)
@@ -46,12 +46,12 @@ The following are developer notes on how to build Garlicoin on your native platf
 
 Development
 ---------------------
-The Garlicoin repo's [root README](/README.md) contains relevant information on the development process and automated testing.
+The Tuxcoin repo's [root README](/README.md) contains relevant information on the development process and automated testing.
 
 - [Developer Notes](developer-notes.md)
 - [Release Notes](release-notes.md)
 - [Release Process](release-process.md)
-- [Source Code Documentation (External Link)](https://dev.visucore.com/garlicoin/doxygen/)
+- [Source Code Documentation (External Link)](https://dev.visucore.com/tuxcoin/doxygen/)
 - [Translation Process](translation_process.md)
 - [Translation Strings Policy](translation_strings_policy.md)
 - [Travis CI](travis-ci.md)
@@ -62,8 +62,8 @@ The Garlicoin repo's [root README](/README.md) contains relevant information on 
 - [Benchmarking](benchmarking.md)
 
 ### Resources
-* Discuss on the [GarlicoinTalk](https://garlicointalk.io/) forums.
-* Discuss general Garlicoin development on #garlicoin-dev on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net/?channels=garlicoin-dev).
+* Discuss on the [TuxcoinTalk](https://tuxcointalk.io/) forums.
+* Discuss general Tuxcoin development on #tuxcoin-dev on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net/?channels=tuxcoin-dev).
 
 ### Miscellaneous
 - [Assets Attribution](assets-attribution.md)

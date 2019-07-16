@@ -207,8 +207,8 @@ UniValue addnode(const JSONRPCRequest& request)
             "1. \"node\"     (string, required) The node (see getpeerinfo for nodes)\n"
             "2. \"command\"  (string, required) 'add' to add a node to the list, 'remove' to remove a node from the list, 'onetry' to try a connection to the node once\n"
             "\nExamples:\n"
-            + HelpExampleCli("addnode", "\"192.168.0.6:42069\" \"onetry\"")
-            + HelpExampleRpc("addnode", "\"192.168.0.6:42069\", \"onetry\"")
+            + HelpExampleCli("addnode", "\"192.168.0.6:42071\" \"onetry\"")
+            + HelpExampleRpc("addnode", "\"192.168.0.6:42071\", \"onetry\"")
         );
 
     if(!g_connman)
@@ -296,7 +296,7 @@ UniValue getaddednodeinfo(const JSONRPCRequest& request)
             "    \"connected\" : true|false,          (boolean) If connected\n"
             "    \"addresses\" : [                    (list of objects) Only when connected = true\n"
             "       {\n"
-            "         \"address\" : \"192.168.0.201:42069\",  (string) The garlicoin server IP and port we're connected to\n"
+            "         \"address\" : \"192.168.0.201:42071\",  (string) The tuxcoin server IP and port we're connected to\n"
             "         \"connected\" : \"outbound\"           (string) connection, inbound or outbound\n"
             "       }\n"
             "     ]\n"

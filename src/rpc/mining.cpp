@@ -159,7 +159,7 @@ UniValue generatetoaddress(const JSONRPCRequest& request)
             "\nMine blocks immediately to a specified address (before the RPC call returns)\n"
             "\nArguments:\n"
             "1. nblocks      (numeric, required) How many blocks are generated immediately.\n"
-            "2. address      (string, required) The address to send the newly generated garlicoin to.\n"
+            "2. address      (string, required) The address to send the newly generated tuxcoin to.\n"
             "3. maxtries     (numeric, optional) How many iterations to try (default = 1000000).\n"
             "\nResult:\n"
             "[ blockhashes ]     (array) hashes of blocks generated\n"
@@ -361,8 +361,10 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
             "  \"sizelimit\" : n,                  (numeric) limit of block size\n"
             "  \"weightlimit\" : n,                (numeric) limit of block weight\n"
             "  \"curtime\" : ttt,                  (numeric) current timestamp in seconds since epoch (Jan 1 1970 GMT)\n"
-            "  \"bits\" : \"xxxxxxxx\",              (string) compressed target of next block\n"
+            "  \"bits\" : \"xxxxxxxx\",            (string) compressed target of next block\n"
             "  \"height\" : n                      (numeric) The height of the next block\n"
+            "  \"donation_payee\" : \"xxxx\"       (string) Donation \n"
+            "  \"donation_payee\" : n              (numeric) The height of the next block\n"
             "}\n"
 
             "\nExamples:\n"
@@ -442,10 +444,10 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
         throw JSONRPCError(RPC_CLIENT_P2P_DISABLED, "Error: Peer-to-peer functionality missing or disabled");
 
     if (g_connman->GetNodeCount(CConnman::CONNECTIONS_ALL) == 0)
-        throw JSONRPCError(RPC_CLIENT_NOT_CONNECTED, "Garlicoin is not connected!");
+        throw JSONRPCError(RPC_CLIENT_NOT_CONNECTED, "Tuxcoin is not connected!");
 
     if (IsInitialBlockDownload())
-        throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "Garlicoin is downloading blocks...");
+        throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "Tuxcoin is downloading blocks...");
 
     static unsigned int nTransactionsUpdatedLast;
 
@@ -673,6 +675,13 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
     result.push_back(Pair("curtime", pblock->GetBlockTime()));
     result.push_back(Pair("bits", strprintf("%08x", pblock->nBits)));
     result.push_back(Pair("height", (int64_t)(pindexPrev->nHeight+1)));
+
+    const CChainParams& chainparams = Params();
+    if(chainparams.IsDevSubsidyBlock(pindexPrev->nHeight+1)){
+        CAmount nDonationPayment = GetDevSubsidy(pindexPrev->nHeight+1, chainparams.GetConsensus());
+        result.push_back(Pair("donation_amount", (int64_t) nDonationPayment));
+        result.push_back(Pair("donation_payee", chainparams.DevAddress()));
+    }
 
     if (!pblocktemplate->vchCoinbaseCommitment.empty() && fSupportsSegwit) {
         result.push_back(Pair("default_witness_commitment", HexStr(pblocktemplate->vchCoinbaseCommitment.begin(), pblocktemplate->vchCoinbaseCommitment.end())));

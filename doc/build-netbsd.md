@@ -25,12 +25,12 @@ python27
 
 Download the source code:
 ```
-git clone https://github.com/GarlicoinOrg/Garlicoin
+git clone https://github.com/bleach86/tuxcoin-V2
 ```
 
 See [dependencies.md](dependencies.md) for a complete overview.
 
-### Building Garlicoin Core
+### Building Tuxcoin Core
 
 **Important**: Use `gmake` (the non-GNU `make` will exit with an error).
 

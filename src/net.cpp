@@ -1507,7 +1507,7 @@ void ThreadMapPort()
             }
         }
 
-        std::string strDesc = "Garlicoin " + FormatFullVersion();
+        std::string strDesc = "Tuxcoin " + FormatFullVersion();
 
         try {
             while (true) {

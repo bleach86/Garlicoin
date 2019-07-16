@@ -13,7 +13,7 @@
 - (NSString *)__bundleIdentifier
 {
     if (self == [NSBundle mainBundle]) {
-        return @"org.garlicoin.Garlicoin-Qt";
+        return @"org.tuxcoin.Tuxcoin-Qt";
     } else {
         return [self __bundleIdentifier];
     }

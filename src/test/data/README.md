@@ -1,7 +1,7 @@
 Description
 ------------
 
-This directory contains data-driven tests for various aspects of Garlicoin.
+This directory contains data-driven tests for various aspects of Tuxcoin.
 
 License
 --------

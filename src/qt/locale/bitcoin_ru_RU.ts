@@ -62,12 +62,12 @@
         <translation>Адреса получения</translation>
     </message>
     <message>
-        <source>These are your Garlicoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Это ваши Garlicoin адреса для отправки платежа. Всегда проверяйте сумму и адрес получателя перед отправкой платежа.</translation>
+        <source>These are your Tuxcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Это ваши Tuxcoin адреса для отправки платежа. Всегда проверяйте сумму и адрес получателя перед отправкой платежа.</translation>
     </message>
     <message>
-        <source>These are your Garlicoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Это ваши Garlicoin адреса для получения платежей. Настоятельно рекомендуем использовать новые адреса для получения каждой транзакции.</translation>
+        <source>These are your Tuxcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Это ваши Tuxcoin адреса для получения платежей. Настоятельно рекомендуем использовать новые адреса для получения каждой транзакции.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -306,8 +306,8 @@
         <translation>Реиндексация блоков на диске...</translation>
     </message>
     <message>
-        <source>Send coins to a Garlicoin address</source>
-        <translation>Послать средства на Garlicoin адрес</translation>
+        <source>Send coins to a Tuxcoin address</source>
+        <translation>Послать средства на Tuxcoin адрес</translation>
     </message>
     <message>
         <source>Change the passphrase used for wallet encryption</source>
@@ -322,8 +322,8 @@
         <translation>&amp;Проверить сообщение...</translation>
     </message>
     <message>
-        <source>Garlicoin</source>
-        <translation>Garlicoin Core</translation>
+        <source>Tuxcoin</source>
+        <translation>Tuxcoin Core</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -481,8 +481,8 @@
         <translation>Добро пожаловать в %1.</translation>
     </message>
     <message>
-        <source>Garlicoin</source>
-        <translation>Garlicoin Core</translation>
+        <source>Tuxcoin</source>
+        <translation>Tuxcoin Core</translation>
     </message>
     <message>
         <source>Error</source>
@@ -542,8 +542,8 @@
         <translation>Пробросить порт через &amp;UPnP</translation>
     </message>
     <message>
-        <source>Connect to the Garlicoin network through a SOCKS5 proxy.</source>
-        <translation>Подключится к сети Garlicoin через SOCKS5 прокси.</translation>
+        <source>Connect to the Tuxcoin network through a SOCKS5 proxy.</source>
+        <translation>Подключится к сети Tuxcoin через SOCKS5 прокси.</translation>
     </message>
     <message>
         <source>Proxy &amp;IP:</source>
@@ -630,7 +630,7 @@
 <context>
     <name>QObject</name>
     <message>
-        <source>Enter a Garlicoin address (e.g. %1)</source>
+        <source>Enter a Tuxcoin address (e.g. %1)</source>
         <translation>Введите биткоин-адрес (напр. %1)</translation>
     </message>
     <message>
@@ -924,8 +924,8 @@
 <context>
     <name>bitcoin-core</name>
     <message>
-        <source>Garlicoin Core</source>
-        <translation>Garlicoin Core</translation>
+        <source>Tuxcoin Core</source>
+        <translation>Tuxcoin Core</translation>
     </message>
     <message>
         <source>Whitelisted peers cannot be DoS banned and their transactions are always relayed, even if they are already in the mempool, useful e.g. for a gateway</source>

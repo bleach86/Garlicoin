@@ -1,1 +1,1 @@
-Garlicoin Core
+Tuxcoin Core

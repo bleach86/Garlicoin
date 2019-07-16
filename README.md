@@ -1,9 +1,9 @@
-Garlicoin Core integration/staging tree
+Tuxcoin Core integration/staging tree
 
 License
 -------
 
-Garlicoin Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
+Tuxcoin Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
 information or see https://opensource.org/licenses/MIT.
 
 Development Process
@@ -11,12 +11,12 @@ Development Process
 
 The `master` branch is regularly built and tested, but is not guaranteed to be
 completely stable. 
-[Tags](https://github.com/garlicoinorg/garlicoin/tags) are created
-regularly to indicate new official, stable release versions of Garlicoin Core.
+[Tags](https://github.com/bleach86/tuxcoin-V2/tags) are created
+regularly to indicate new official, stable release versions of Tuxcoin Core.
 
 The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md).
 
-Developer Discord can be found [Here](https://discord.gg/Vp4Xz26).
+Developer Discord can be found [Here](https://discord.gg/NwAsQZU).
 
 Testing
 -------
@@ -50,7 +50,7 @@ Translations
 ------------
 
 We only accept translation fixes that are submitted through [Bitcoin Core's Transifex page](https://www.transifex.com/projects/p/bitcoin/).
-Translations are converted to Garlicoin periodically.
+Translations are converted to Tuxcoin periodically.
 
 Translations are periodically pulled from Transifex and merged into the git repository. See the
 [translation process](doc/translation_process.md) for details on how this works.

@@ -14,9 +14,9 @@ To add more litecoind tests, add `BOOST_AUTO_TEST_CASE` functions to the existin
 .cpp files in the `test/` directory or add new .cpp files that
 implement new BOOST_AUTO_TEST_SUITE sections.
 
-To run the garlicoin-qt tests manually, launch `src/qt/test/test_litecoin-qt`
+To run the tuxcoin-qt tests manually, launch `src/qt/test/test_litecoin-qt`
 
-To add more garlicoin-qt tests, add them to the `src/qt/test/` directory and
+To add more tuxcoin-qt tests, add them to the `src/qt/test/` directory and
 the `src/qt/test/test_main.cpp` file.
 
 ### Running individual tests
@@ -35,12 +35,12 @@ Run `test_litecoin --help` for the full list.
 ### Note on adding test cases
 
 The sources in this directory are unit test cases.  Boost includes a
-unit testing framework, and since garlicoin already uses boost, it makes
+unit testing framework, and since tuxcoin already uses boost, it makes
 sense to simply use this framework rather than require developers to
 configure some other framework (we want as few impediments to creating
 unit tests as possible).
 
-The build system is setup to compile an executable called "test_garlicoin"
+The build system is setup to compile an executable called "test_tuxcoin"
 that runs all of the unit tests.  The main source file is called
 test_bitcoin.cpp, which simply includes other files that contain the
 actual unit tests (outside of a couple required preprocessor

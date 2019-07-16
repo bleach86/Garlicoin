@@ -1,5 +1,5 @@
-Building Garlicoin
+Building Tuxcoin
 ================
 
 See doc/build-*.md for instructions on building the various
-elements of the Garlicoin Core reference implementation of Garlicoin.
+elements of the Tuxcoin Core reference implementation of Tuxcoin.

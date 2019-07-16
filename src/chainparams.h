@@ -80,14 +80,30 @@ public:
     const ChainTxData& TxData() const { return chainTxData; }
     void UpdateVersionBitsParameters(Consensus::DeploymentPos d, int64_t nStartTime, int64_t nTimeout);
     int GetPoWAlgo(int nHeight) const {
-        if (strNetworkID == CBaseChainParams::TESTNET && nHeight > 10){
-            return ALGO_ALLIUM ;
-        } else if(strNetworkID == CBaseChainParams::MAIN && nHeight > 58670){ // Approx 19:00 2018-02-16 UTC
+        if(strNetworkID == CBaseChainParams::MAIN && nHeight > 15000){
+            return ALGO_ALLIUM;
+        } else if(strNetworkID == CBaseChainParams::REGTEST && nHeight > 20){
+            return ALGO_ALLIUM;
+        } else if(strNetworkID == CBaseChainParams::TESTNET && nHeight > 20){
             return ALGO_ALLIUM;
         } else {
             return ALGO_SCRYPT;
         }
     }
+    int GetBlockSubsidyChangeHeight() const { return blockSubsidyFork; }
+    bool IsDevSubsidyBlock(int nHeight) const {
+        if(nHeight < GetBlockSubsidyChangeHeight()) {
+            return false;
+        }
+        if(strNetworkID == CBaseChainParams::MAIN){
+            return nHeight % 43200 == 0;
+        } else if(strNetworkID == CBaseChainParams::REGTEST || strNetworkID == CBaseChainParams::TESTNET) {
+            return nHeight % 10 == 0;
+        } else {
+            return nHeight % 43200 == 0;
+        }
+    }
+    const std::string& DevAddress() const { return strDevAddress; }
 protected:
     CChainParams() {}
 
@@ -106,6 +122,8 @@ protected:
     bool fMineBlocksOnDemand;
     CCheckpointData checkpointData;
     ChainTxData chainTxData;
+    int blockSubsidyFork;
+    std::string strDevAddress;
 };
 
 /**

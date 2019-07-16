@@ -16,14 +16,14 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "Garlicoin"
-            VALUE "FileDescription",    "garlicoind (Garlicoin node with a JSON-RPC server)"
+            VALUE "CompanyName",        "Tuxcoin"
+            VALUE "FileDescription",    "tuxcoind (Tuxcoin node with a JSON-RPC server)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
-            VALUE "InternalName",       "garlicoind"
+            VALUE "InternalName",       "tuxcoind"
             VALUE "LegalCopyright",     COPYRIGHT_STR
             VALUE "LegalTrademarks1",   "Distributed under the MIT software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
-            VALUE "OriginalFilename",   "garlicoind.exe"
-            VALUE "ProductName",        "garlicoind"
+            VALUE "OriginalFilename",   "tuxcoind.exe"
+            VALUE "ProductName",        "tuxcoind"
             VALUE "ProductVersion",     VER_PRODUCTVERSION_STR
         END
     END

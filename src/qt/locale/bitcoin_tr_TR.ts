@@ -62,12 +62,12 @@
         <translation>Alınan Adresler</translation>
     </message>
     <message>
-        <source>These are your Garlicoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Bunlar ödeme göndermek için gereken Garlicoin adreslerinizdir. Para göndermeden önce her zaman miktarı ve alıcı adresi kontrol edin.</translation>
+        <source>These are your Tuxcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Bunlar ödeme göndermek için gereken Tuxcoin adreslerinizdir. Para göndermeden önce her zaman miktarı ve alıcı adresi kontrol edin.</translation>
     </message>
     <message>
-        <source>These are your Garlicoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Bunlar ödeme almak için kullanılacak Garlicoin adreslerinizdir. Her işlem için yeni bir ödeme alma adresi kullanılması tavsiye edilir.</translation>
+        <source>These are your Tuxcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Bunlar ödeme almak için kullanılacak Tuxcoin adreslerinizdir. Her işlem için yeni bir ödeme alma adresi kullanılması tavsiye edilir.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -286,8 +286,8 @@
         <translation>Bloklar disk üzerinde yeniden indeksleniyor...</translation>
     </message>
     <message>
-        <source>Send coins to a Garlicoin address</source>
-        <translation>Garlicoin adresine madeni para gönderin</translation>
+        <source>Send coins to a Tuxcoin address</source>
+        <translation>Tuxcoin adresine madeni para gönderin</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -302,8 +302,8 @@
         <translation>Onay mesajı...</translation>
     </message>
     <message>
-        <source>Garlicoin</source>
-        <translation>Garlicoin</translation>
+        <source>Tuxcoin</source>
+        <translation>Tuxcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -457,8 +457,8 @@
         <translation>Gönderim adresini düzenleyin</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Garlicoin address.</source>
-        <translation>Girilen adres "%1" Garlicoin adresiyle eşleşmiyor.</translation>
+        <source>The entered address "%1" is not a valid Tuxcoin address.</source>
+        <translation>Girilen adres "%1" Tuxcoin adresiyle eşleşmiyor.</translation>
     </message>
     <message>
         <source>The entered address "%1" is already in the address book.</source>
@@ -514,8 +514,8 @@
         <translation>Hoş geldiniz</translation>
     </message>
     <message>
-        <source>Garlicoin</source>
-        <translation>Garlicoin
+        <source>Tuxcoin</source>
+        <translation>Tuxcoin
 </translation>
     </message>
     <message>
@@ -660,8 +660,8 @@
 <context>
     <name>QObject</name>
     <message>
-        <source>Enter a Garlicoin address (e.g. %1)</source>
-        <translation>Garlicoin adresinizi girin (örneğin %1)</translation>
+        <source>Enter a Tuxcoin address (e.g. %1)</source>
+        <translation>Tuxcoin adresinizi girin (örneğin %1)</translation>
     </message>
     <message>
         <source>N/A</source>
@@ -1041,8 +1041,8 @@
         <translation>Coin gönderimini onaylayın</translation>
     </message>
     <message>
-        <source>Warning: Invalid Garlicoin address</source>
-        <translation>Uyarı: Hatalı Garlicoin adresi</translation>
+        <source>Warning: Invalid Tuxcoin address</source>
+        <translation>Uyarı: Hatalı Tuxcoin adresi</translation>
     </message>
     <message>
         <source>(no label)</source>
@@ -1342,8 +1342,8 @@
         <translation>JSON-RPC komutları ile komut satırını onaylayın</translation>
     </message>
     <message>
-        <source>Garlicoin Core</source>
-        <translation>Garlicoin Çekirdeği</translation>
+        <source>Tuxcoin Core</source>
+        <translation>Tuxcoin Çekirdeği</translation>
     </message>
     <message>
         <source>&lt;category&gt; can be:</source>
